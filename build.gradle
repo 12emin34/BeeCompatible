@@ -1,25 +1,11 @@
-buildscript {
-	repositories {
-		jcenter()
-		maven {
-			name = 'Fabric'
-			url = 'http://maven.modmuss50.me/'
-		}
-	}
-	dependencies {
-		classpath "net.fabricmc:fabric-loom:0.2.6-SNAPSHOT"
-	}
-}
-
 plugins {
 	id 'java'
 	id 'eclipse'
 	id 'idea'
 	id 'maven-publish'
 	id "com.jfrog.artifactory" version "4.9.0"
+	id "fabric-loom" version "0.11-SNAPSHOT"
 }
-
-apply plugin: net.fabricmc.loom.LoomGradlePlugin
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -32,14 +18,15 @@ archivesBaseName = "${project.archives_base_name}"
 group = "${project.maven_group}"
 version = "${project.mod_version}+${project.minecraft_version}"
 
-minecraft {
-}
-
 repositories {
 	mavenCentral()
-	maven { url "http://maven.fabricmc.net/" }
-	maven { url "http://server.bbkr.space:8081/artifactory/libs-release" }
+	maven { url "https://maven.fabricmc.net/" }
+	maven {
+		url "http://server.bbkr.space:8081/artifactory/libs-release"
+		allowInsecureProtocol = true
+	}
 	maven { url "https://minecraft.curseforge.com/api/maven" }
+	maven { url 'https://jitpack.io' }
 }
 
 dependencies {
@@ -49,11 +36,12 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 	compileOnly "com.google.code.findbugs:jsr305:3.0.2"
 
-	modCompileOnly "bee-better:BeeBetter:1.6.0"
-	modRuntime "bee-better:BeeBetter:1.6.0"
+	modCompileOnly "com.github.Draylar:bee-better:1.8.0-1.16.4"
+	modRuntimeOnly "com.github.Draylar:bee-better:1.8.0-1.16.4"
 }
 
 processResources {
+	duplicatesStrategy("include")
 	inputs.property "version", project.version
 	from(sourceSets.main.resources.srcDirs) {
 		include "fabric.mod.json"
