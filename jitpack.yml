@@ -2,9 +2,9 @@ jdk:
   - openjdk17
 before_install:
   - echo "Before Install"
-  - ./ensure-java-version install
+  - ./ensure-java-version.sh install
 install:
   - echo "Install"
-  - if ! ./ensure-java-version use; then source ~/.sdkman/bin/sdkman-init.sh; fi
+  - if ! ./ensure-java-version.sh use; then source ~/.sdkman/bin/sdkman-init.sh; fi
   - ./gradlew build
   - ./gradlew publishToMavenLocal
