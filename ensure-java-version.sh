@@ -11,7 +11,7 @@ if [ "$JV" != 17 ]; then
 		source ~/.sdkman/bin/sdkman-init.sh
 		sdk version
 		sdk update
-		sdk install java 17.0.3-open
+		sdk install java 17.0.3-tem
 		;;
 	use)
 		echo "must source ~/.sdkman/bin/sdkman-init.sh"
