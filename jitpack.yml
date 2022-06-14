@@ -6,3 +6,5 @@ before_install:
 install:
   - echo "Install"
   - if ! bash ensure-java-version use; then source ~/.sdkman/bin/sdkman-init.sh; fi
+  - ./gradlew build
+  - ./gradlew publishToMavenLocal
