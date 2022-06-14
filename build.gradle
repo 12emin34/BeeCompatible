@@ -127,3 +127,7 @@ artifactory {
 		println "Cannot configure artifactory; please define ext.artifactoryUsername and ext.artifactoryPassword before running artifactoryPublish"
 	}
 }
+
+loom {
+	accessWidenerPath = file("src/main/resources/beecompatible.accesswidener")
+}
