@@ -27,7 +27,7 @@ public abstract class MixinBeehiveBlockEntity extends BlockEntity implements Tic
         super(type);
     }
 
-    @Inject(method = "releaseBee", at = @At(value = "TAIL"), cancellable = true, locals = LocalCapture.CAPTURE_FAILSOFT)
+    @Inject(method = "releaseBee", at = @At(value = "RETURN"), cancellable = true, locals = LocalCapture.CAPTURE_FAILSOFT)
     private void timeEvent(BlockState state, BeehiveBlockEntity.Bee bee, List<Entity> list, BeehiveBlockEntity.BeeState beeState, CallbackInfoReturnable<Boolean> cir) {
         CompoundTag compoundTag = bee.entityData;
         Entity entity = EntityType.loadEntityWithPassengers(compoundTag, world, e -> e);
@@ -39,7 +39,7 @@ public abstract class MixinBeehiveBlockEntity extends BlockEntity implements Tic
         cir.setReturnValue(world.isNight());
     }
 
-    @Inject(method = "releaseBee", at = @At(value = "TAIL"), cancellable = true, locals = LocalCapture.CAPTURE_FAILSOFT)
+    @Inject(method = "releaseBee", at = @At(value = "RETURN"), cancellable = true, locals = LocalCapture.CAPTURE_FAILSOFT)
     private void weatherEvent(BlockState state, BeehiveBlockEntity.Bee bee, List<Entity> list, BeehiveBlockEntity.BeeState beeState, CallbackInfoReturnable<Boolean> cir) {
         CompoundTag compoundTag = bee.entityData;
         Entity entity = EntityType.loadEntityWithPassengers(compoundTag, world, e -> e);
