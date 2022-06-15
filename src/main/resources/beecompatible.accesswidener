@@ -1,3 +1,4 @@
 accessWidener v1 named
 accessible class net/minecraft/block/entity/BeehiveBlockEntity$Bee
 accessible field net/minecraft/block/entity/BeehiveBlockEntity$Bee entityData Lnet/minecraft/nbt/CompoundTag;
+accessible field net/minecraft/block/entity/BeehiveBlockEntity$Bee ticksInHive I
