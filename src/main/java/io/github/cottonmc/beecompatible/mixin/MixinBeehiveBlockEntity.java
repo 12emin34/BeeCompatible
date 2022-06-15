@@ -26,7 +26,7 @@ import org.spongepowered.asm.mixin.Shadow;
 
 import java.util.List;
 
-@Mixin(value = BeehiveBlockEntity.class, priority = 900)
+@Mixin(value = BeehiveBlockEntity.class)
 public abstract class MixinBeehiveBlockEntity extends BlockEntity implements Tickable {
 
     @Shadow
